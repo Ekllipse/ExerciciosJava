@@ -31,8 +31,8 @@ public class ChaveValor {
 	}
 
 	public String getValor() {
-		if(this.tipoCampo == TipoCampo.VARCHAR) {
-			this.campo = "\"" + valor + "\"";
+		if((this.tipoCampo == TipoCampo.VARCHAR) && !(this.valor.equals("NULL"))) {
+			this.valor = "\"" + valor + "\"";
 		}
 		return valor;
 	}
