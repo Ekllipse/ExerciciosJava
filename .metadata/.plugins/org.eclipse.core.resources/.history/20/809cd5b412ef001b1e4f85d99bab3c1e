@@ -20,9 +20,6 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
-		String path2 = "C:\\ConvertMYSQLtoFirebird\\FIREBIRDSCRIPT.SQL";
-		
 		ChaveValor vectCV[] = { new ChaveValor("NUM_CONTROLE", TipoCampo.NUMERO),
 				new ChaveValor("NUMERO", TipoCampo.NUMERO), new ChaveValor("LETRA", TipoCampo.VARCHAR),
 				new ChaveValor("STATUS", TipoCampo.NUMERO), new ChaveValor("MESA", TipoCampo.NUMERO),
@@ -92,7 +89,7 @@ public class Program {
 
 		};
 		List<String> listSQL = new ArrayList<>();
-		
+		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String linhaOut = br.readLine();
 			String linha[] = linhaOut.split(",");
@@ -199,22 +196,18 @@ public class Program {
 
 			}
 
-			
+			for (String x : listSQL) {
+				System.out.println(x);
+
+			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path2))){
-			for (String x : listSQL) {
-				bw.write(x);;
-				bw.newLine();
-
-			}
+		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
 			
-			System.out.println("Arquivo gerado!");
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		sc.close();
 
 	}

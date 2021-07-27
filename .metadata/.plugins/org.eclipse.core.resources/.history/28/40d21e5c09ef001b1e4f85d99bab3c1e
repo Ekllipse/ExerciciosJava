@@ -31,16 +31,13 @@ public class ChaveValor {
 	}
 
 	public String getValor() {
-		if((this.tipoCampo == TipoCampo.VARCHAR) && !(this.valor.equals("NULL"))) {
+		if(this.tipoCampo == TipoCampo.VARCHAR) {
 			this.valor = "\"" + valor + "\"";
 		}
 		return valor;
 	}
 
 	public void setValor(String valor) {
-		if(valor.contains("\"")) {
-			this.valor = valor.replace("\"", "");
-		}else
 		this.valor = valor;
 	}
 	

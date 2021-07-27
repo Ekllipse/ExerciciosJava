@@ -1,9 +1,7 @@
 package aplication;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +18,6 @@ public class Program {
 
 		Scanner sc = new Scanner(System.in);
 
-		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
-		String path2 = "C:\\ConvertMYSQLtoFirebird\\FIREBIRDSCRIPT.SQL";
-		
 		ChaveValor vectCV[] = { new ChaveValor("NUM_CONTROLE", TipoCampo.NUMERO),
 				new ChaveValor("NUMERO", TipoCampo.NUMERO), new ChaveValor("LETRA", TipoCampo.VARCHAR),
 				new ChaveValor("STATUS", TipoCampo.NUMERO), new ChaveValor("MESA", TipoCampo.NUMERO),
@@ -92,7 +87,7 @@ public class Program {
 
 		};
 		List<String> listSQL = new ArrayList<>();
-		
+		String path = "C:\\ConvertMYSQLtoFirebird\\MYSQL.csv";
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String linhaOut = br.readLine();
 			String linha[] = linhaOut.split(",");
@@ -109,6 +104,7 @@ public class Program {
 			while (linhaOut != null) {
 				linha = linhaOut.split(",");
 				linhaOut = br.readLine();
+				System.out.println(linhaOut);
 				for (int i = 0; i < vectCV.length; i++) {
 					for (int j = 0; j < linha.length; j++)
 						vectCV[i].setValor(linha[vectCV[i].getPosicao()]);
@@ -199,22 +195,14 @@ public class Program {
 
 			}
 
-			
+			/*for (String x : listSQL) {
+				System.out.println(x);
+
+			}*/
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path2))){
-			for (String x : listSQL) {
-				bw.write(x);;
-				bw.newLine();
 
-			}
-			
-			System.out.println("Arquivo gerado!");
-		}catch(IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
 		sc.close();
 
 	}

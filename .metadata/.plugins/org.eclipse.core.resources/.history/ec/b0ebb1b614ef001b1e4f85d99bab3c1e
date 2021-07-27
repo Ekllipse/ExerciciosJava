@@ -209,12 +209,9 @@ public class Program {
 				bw.newLine();
 
 			}
-			
-			System.out.println("Arquivo gerado!");
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		sc.close();
 
 	}

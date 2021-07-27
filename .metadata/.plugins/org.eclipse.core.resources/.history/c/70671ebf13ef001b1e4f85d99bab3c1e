@@ -206,15 +206,11 @@ public class Program {
 		try(BufferedWriter bw = new BufferedWriter(new FileWriter(path2))){
 			for (String x : listSQL) {
 				bw.write(x);;
-				bw.newLine();
 
 			}
-			
-			System.out.println("Arquivo gerado!");
 		}catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		sc.close();
 
 	}
